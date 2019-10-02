@@ -1,6 +1,19 @@
 <template>
-  <div>
-    <h1>Question Box</h1>
+  <div class="question-box-container">
+    <b-jumbotron>
+      <template v-slot:lead>
+        Some question here ?.
+      </template>
+
+      <hr class="my-4" />
+
+      <p>
+        List Anwers.
+      </p>
+
+      <b-button variant="primary" href="#">Submit</b-button>
+      <b-button variant="success" href="#">Next</b-button>
+    </b-jumbotron>
   </div>
 </template>
 
