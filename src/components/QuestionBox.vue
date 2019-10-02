@@ -18,7 +18,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    currentQuestion: Object,
+  },
+};
 </script>
 
 <style scoped></style>

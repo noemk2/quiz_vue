@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       questions: [],
+      index: 0,
     };
   },
   mounted: function() {
@@ -34,7 +35,7 @@ export default {
         return response.json();
       })
       .then(jsonData => {
-        this.questions = jsonData;
+        this.questions = jsonData.results;
       });
   },
 };
