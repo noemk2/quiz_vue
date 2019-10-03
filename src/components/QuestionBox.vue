@@ -34,12 +34,12 @@ export default {
   data() {
     return {
       selectedIndex: null,
-      shufledAnswers: [],
+      shuffledAnswers: [],
     };
   },
-  mounted() {
-    console.log(this.currentQuestion);
-  },
+  // mounted() {
+  //   console.log(this.currentQuestion);
+  // },
   computed: {
     answers() {
       let answers = [...this.currentQuestion.incorrect_answers];
@@ -48,23 +48,29 @@ export default {
     },
   },
   watch: {
-    currentQuestion() {
-      this.selectedIndex = null;
-      this.shuffleAnswers();
+    currentQuestion: {
+      immediate: true,
+      handler() {
+        this.selectedIndex = null;
+        this.shuffleAnswers();
+      },
     },
   },
   methods: {
     selectAnswer(index) {
       this.selectedIndex = index;
     },
+    shuffleAnswers() {
+      let answers = [
+        ...this.currentQuestion.incorrect_answers,
+        this.currentQuestion.correct_answer,
+      ];
+      this.shuffledAnswers = _.shuffle(answers);
+    },
   },
-  shuffleAnswers() {
-    let answers = [
-      ...this.currentQuestion.incorrect_answers,
-      this.currentQuestion.correct_answer,
-    ];
-    this.shufledAnswers = _.shuffle(answers);
-  },
+  //  mounted() {
+  //    this.shuffleAnswers();
+  //  },
 };
 </script>
 
