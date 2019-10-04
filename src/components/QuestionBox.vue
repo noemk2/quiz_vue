@@ -10,7 +10,13 @@
           v-for="(answer, index) in answers"
           :key="index"
           @click="selectAnswer(index)"
-          :class="[selectedIndex === index ? 'selected' : '']"
+          :class="[
+            !answered && selectedIndex === index
+              ? 'selected'
+              : answered && correctIndex === index
+              ? 'correct'
+              : '',
+          ]"
           >{{ answer }}</b-list-group-item
         >
       </b-list-group>
@@ -81,6 +87,9 @@ export default {
         this.currentQuestion.correct_answer,
       ];
       this.shuffledAnswers = _.shuffle(answers);
+      this.correctIndex = this.shuffledAnswers.indexOf(
+        this.currentQuestion.correct_answer,
+      );
     },
   },
   //  mounted() {
