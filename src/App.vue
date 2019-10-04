@@ -3,7 +3,7 @@
     <Header :numCorrect="numCorrect" :numTotal="numTotal" />
     <b-container class="bv-example-row">
       <b-row>
-        <b-col sm="6" offsetp="3">
+        <b-col sm="6" offset="3">
           <QuestionBox
             v-if="questions.length"
             :currentQuestion="questions[index]"
